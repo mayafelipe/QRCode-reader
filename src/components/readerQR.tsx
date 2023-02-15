@@ -1,5 +1,5 @@
 import React, { FC, useRef, Dispatch, SyntheticEvent, ChangeEvent, useState } from 'react';
-import { QrReader } from 'react-qr-reader';
+import QrReader from 'react-qr-reader';
 import QrScanner from 'qr-scanner';
 
 interface ReaderQRProps {
@@ -7,6 +7,13 @@ interface ReaderQRProps {
   setScanResultFile: Dispatch<React.SetStateAction<any>>;
   scanResultWebCam: string;
   setScanResultWebCam: Dispatch<React.SetStateAction<string>>;
+}
+
+interface Result {
+  text: string;
+  rawBytes: Uint8Array;
+  numBits: number;
+  timestamp?: number;
 }
 
 const ReaderQR: FC<ReaderQRProps> = ({
@@ -31,14 +38,14 @@ const ReaderQR: FC<ReaderQRProps> = ({
   const onScanFile = () => {
     fileRef.current.click();
   };
-  const handleScanWebCam = (result: string) => {
+  const handleScanWebCam = (result: string | null) => {
     if (result) {
       setScanResultWebCam(result);
     }
   };
 
-  const constraints = {
-    facingMode: { exact: 'environment' },
+  const handleErrorWebCam = (error: string | null) => {
+    console.log(error);
   };
   return (
     <>
@@ -54,18 +61,10 @@ const ReaderQR: FC<ReaderQRProps> = ({
       </div>
       <div>
         <QrReader
-          constraints={constraints}
-          scanDelay={300}
-          onResult={(result, error) => {
-            if (result) {
-              console.log(result);
-              setScanResultWebCam(result?.text);
-            }
-
-            if (!!error) {
-              console.info(error);
-            }
-          }}
+          delay={300}
+          style={{ width: '100%' }}
+          onError={handleErrorWebCam}
+          onScan={handleScanWebCam}
         />
         <h3>Scanned by WebCam: {scanResultWebCam}</h3>
       </div>
