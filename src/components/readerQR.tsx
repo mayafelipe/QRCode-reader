@@ -1,13 +1,6 @@
-import React, {
-  FC,
-  useRef,
-  Dispatch,
-  SyntheticEvent,
-  ChangeEvent,
-  useState,
-} from "react";
-import { QrReader } from "react-qr-reader";
-import QrScanner from "qr-scanner";
+import React, { FC, useRef, Dispatch, SyntheticEvent, ChangeEvent, useState } from 'react';
+import { QrReader } from 'react-qr-reader';
+import QrScanner from 'qr-scanner';
 
 interface ReaderQRProps {
   scanResultFile: string;
@@ -45,7 +38,7 @@ const ReaderQR: FC<ReaderQRProps> = ({
   };
 
   const constraints = {
-    facingMode: { exact: "environment" },
+    facingMode: { exact: 'environment' },
   };
   return (
     <>
