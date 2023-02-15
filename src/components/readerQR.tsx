@@ -9,13 +9,6 @@ interface ReaderQRProps {
   setScanResultWebCam: Dispatch<React.SetStateAction<string>>;
 }
 
-interface Result {
-  text: string;
-  rawBytes: Uint8Array;
-  numBits: number;
-  timestamp?: number;
-}
-
 const ReaderQR: FC<ReaderQRProps> = ({
   scanResultFile,
   setScanResultFile,
