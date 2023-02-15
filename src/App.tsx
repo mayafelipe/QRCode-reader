@@ -1,3 +1,4 @@
+import React from "react";
 import "./styles.css";
 import Input from "../src/components/input";
 
