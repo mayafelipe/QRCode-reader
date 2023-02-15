@@ -1,0 +1,59 @@
+Arguments: 
+  /usr/local/bin/node /opt/yarn-v1.22.19/bin/yarn.js
+
+PATH: 
+  /project/home/mayafelipe/.nix-profile/bin:/nix/var/nix/profiles/default/bin:/opt/pitcher/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+
+Yarn version: 
+  1.22.19
+
+Node version: 
+  16.17.0
+
+Platform: 
+  linux x64
+
+Trace: 
+  SyntaxError: /project/home/mayafelipe/workspace/package.json: Unexpected token p in JSON at position 1
+      at JSON.parse (<anonymous>)
+      at /opt/yarn-v1.22.19/lib/cli.js:1629:59
+      at Generator.next (<anonymous>)
+      at step (/opt/yarn-v1.22.19/lib/cli.js:310:30)
+      at /opt/yarn-v1.22.19/lib/cli.js:321:13
+
+npm manifest: 
+  npm{
+    "name": "qrcode-react",
+    "version": "1.0.0",
+    "description": "",
+    "keywords": [],
+    "main": "src/index.js",
+    "dependencies": {
+      "react": "18.2.0",
+      "react-dom": "18.2.0",
+      "react-scripts": "4.0.0",
+      "typescript": "4.9.5",
+      "qrcode": "1.5.1"
+    },
+    "devDependencies": {
+      "@babel/runtime": "7.13.8"
+    },
+    "scripts": {
+      "start": "react-scripts start",
+      "build": "react-scripts build",
+      "test": "react-scripts test --env=jsdom",
+      "eject": "react-scripts eject"
+    },
+    "browserslist": [
+      ">0.2%",
+      "not dead",
+      "not ie <= 11",
+      "not op_mini all"
+    ]
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
