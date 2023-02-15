@@ -7,6 +7,7 @@ export default function App() {
   const [text, setText] = useState("");
   const [imageUrl, setImageUrl] = useState("");
   const [scanResultFile, setScanResultFile] = useState("");
+  const [scanResultWebCam, setScanResultWebCam] = useState("");
   return (
     <div className="App">
       <h1>Generate, download & scan QR Code</h1>
@@ -19,6 +20,8 @@ export default function App() {
       <ReaderQR
         scanResultFile={scanResultFile}
         setScanResultFile={setScanResultFile}
+        scanResultWebCam={scanResultWebCam}
+        setScanResultWebCam={setScanResultWebCam}
       />
     </div>
   );

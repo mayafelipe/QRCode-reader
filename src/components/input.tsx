@@ -1,4 +1,4 @@
-import React, { FC, Dispatch } from "react";
+import React, { FC, Dispatch, KeyboardEvent, FormEvent } from "react";
 import QRCode from "qrcode";
 
 interface InputProps {
@@ -9,7 +9,11 @@ interface InputProps {
 }
 
 const Input: FC<InputProps> = ({ text, setText, imageUrl, setImageUrl }) => {
-  const generateQrCode = async () => {
+  const generateQrCode = async (e: FormEvent) => {
+    e.preventDefault();
+    if (!text) {
+      return alert("Please enter some value");
+    }
     try {
       const response: string = await QRCode.toDataURL(text);
       setImageUrl(response);
@@ -19,22 +23,21 @@ const Input: FC<InputProps> = ({ text, setText, imageUrl, setImageUrl }) => {
     }
   };
   return (
-    <>
+    <form onSubmit={generateQrCode}>
       <input
         type="text"
         onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
           setText(e.target.value)
         }
       />
-      <button onClick={() => generateQrCode()}>Generate</button>
+      <button type="submit">Generate</button>
       <br />
       {imageUrl != "" && (
-        <a href={imageUrl} target="_blank" rel="noreferrer">
-          Download
+        <a href={imageUrl} download={"qr.png"}>
           <img src={imageUrl} alt="img" />
         </a>
       )}
-    </>
+    </form>
   );
 };
 
