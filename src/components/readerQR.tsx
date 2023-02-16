@@ -1,4 +1,4 @@
-import React, { FC, useRef, Dispatch, SyntheticEvent, ChangeEvent, useState } from 'react';
+import React, { FC, useRef, Dispatch, ChangeEvent, MutableRefObject } from 'react';
 import QrReader from 'react-qr-reader';
 import QrScanner from 'qr-scanner';
 
@@ -15,7 +15,7 @@ const ReaderQR: FC<ReaderQRProps> = ({
   scanResultWebCam,
   setScanResultWebCam,
 }) => {
-  const fileRef = useRef<any>();
+  const fileRef = useRef<HTMLInputElement>(null);
   const handleErrorFile = (error: string) => {
     console.log(error);
   };
@@ -29,7 +29,7 @@ const ReaderQR: FC<ReaderQRProps> = ({
     }
   };
   const onScanFile = () => {
-    fileRef.current.click();
+    fileRef.current?.click();
   };
   const handleScanWebCam = (result: string | null) => {
     if (result) {
