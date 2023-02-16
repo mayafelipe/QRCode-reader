@@ -4,7 +4,7 @@ import QrScanner from 'qr-scanner';
 
 interface ReaderQRProps {
   scanResultFile: string;
-  setScanResultFile: Dispatch<React.SetStateAction<any>>;
+  setScanResultFile: Dispatch<React.SetStateAction<string>>;
   scanResultWebCam: string;
   setScanResultWebCam: Dispatch<React.SetStateAction<string>>;
 }
