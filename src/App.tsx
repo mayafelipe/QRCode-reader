@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './styles.css';
 import Input from '../src/components/input';
 import ReaderQR from './components/readerQR';
+import { Grid } from './styles/style';
 
 export default function App() {
   const [text, setText] = useState('');
@@ -9,7 +10,7 @@ export default function App() {
   const [scanResultFile, setScanResultFile] = useState('');
   const [scanResultWebCam, setScanResultWebCam] = useState('');
   return (
-    <div className="App">
+    <Grid className="App">
       <h1>Generate, download & scan QR Code</h1>
       <Input setText={setText} text={text} imageUrl={imageUrl} setImageUrl={setImageUrl} />
       <ReaderQR
@@ -18,6 +19,6 @@ export default function App() {
         scanResultWebCam={scanResultWebCam}
         setScanResultWebCam={setScanResultWebCam}
       />
-    </div>
+    </Grid>
   );
 }

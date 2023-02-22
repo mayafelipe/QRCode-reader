@@ -1,5 +1,6 @@
 import React, { FC, Dispatch, KeyboardEvent, FormEvent } from 'react';
 import QRCode from 'qrcode';
+import { ContainerForm } from '../styles/style';
 
 interface InputProps {
   text: string;
@@ -23,7 +24,7 @@ const Input: FC<InputProps> = ({ text, setText, imageUrl, setImageUrl }) => {
     }
   };
   return (
-    <form onSubmit={generateQrCode}>
+    <ContainerForm className="form" onSubmit={generateQrCode}>
       <input
         type="text"
         onChange={(e: React.ChangeEvent<HTMLInputElement>) => setText(e.target.value)}
@@ -35,7 +36,7 @@ const Input: FC<InputProps> = ({ text, setText, imageUrl, setImageUrl }) => {
           <img src={imageUrl} alt="img" />
         </a>
       )}
-    </form>
+    </ContainerForm>
   );
 };
 

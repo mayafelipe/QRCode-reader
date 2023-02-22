@@ -1,6 +1,7 @@
-import React, { FC, useRef, Dispatch, ChangeEvent, MutableRefObject } from 'react';
+import React, { FC, useRef, Dispatch, ChangeEvent, useState } from 'react';
 import QrReader from 'react-qr-reader';
 import QrScanner from 'qr-scanner';
+import { Container } from '../styles/style';
 
 interface ReaderQRProps {
   scanResultFile: string;
@@ -16,9 +17,8 @@ const ReaderQR: FC<ReaderQRProps> = ({
   setScanResultWebCam,
 }) => {
   const fileRef = useRef<HTMLInputElement>(null);
-  const handleErrorFile = (error: string) => {
-    console.log(error);
-  };
+  const [activeQRreader, setActiveQRreader] = useState<boolean>(false);
+
   const handleChangeScanFile = async (e: ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
     if (e.target.files) {
@@ -28,39 +28,37 @@ const ReaderQR: FC<ReaderQRProps> = ({
       console.log(result);
     }
   };
-  const onScanFile = () => {
-    fileRef.current?.click();
-  };
+
   const handleScanWebCam = (result: string | null) => {
     if (result) {
       setScanResultWebCam(result);
+      setActiveQRreader(false);
     }
   };
-
   const handleErrorWebCam = (error: string | null) => {
     console.log(error);
   };
   return (
     <>
-      <div>
-        <button onClick={() => onScanFile}>Scan QR code</button>
-        <input
-          ref={fileRef}
-          onChange={handleChangeScanFile}
-          type="file"
-          accept="image/png, image/jgp, image/jpge"
-        />
+      <Container className="file">
+        <label className="file-upload">
+          Choose QR
+          <input
+            ref={fileRef}
+            onChange={handleChangeScanFile}
+            type="file"
+            accept="image/png, image/jgp, image/jpge"
+          />
+        </label>
         <h3>Scanned code: {scanResultFile}</h3>
-      </div>
-      <div>
-        <QrReader
-          delay={300}
-          style={{ width: '100%' }}
-          onError={handleErrorWebCam}
-          onScan={handleScanWebCam}
-        />
+      </Container>
+      <Container className="cam">
+        <button onClick={() => setActiveQRreader(true)}>Scan QR code</button>
+        {activeQRreader && (
+          <QrReader delay={300} onError={handleErrorWebCam} onScan={handleScanWebCam} />
+        )}
         <h3>Scanned by WebCam: {scanResultWebCam}</h3>
-      </div>
+      </Container>
     </>
   );
 };
