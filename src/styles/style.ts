@@ -36,7 +36,7 @@ export const Grid = styled.div<GridProps>`
   }
   .cam > section {
     margin: 1rem auto 0;
-    width: 50%;
+    width: 80%;
   }
   button,
   .file-upload {
@@ -62,6 +62,9 @@ export const Grid = styled.div<GridProps>`
       'scan'
       'file'
       'cam';
+    .cam > section {
+      width: 100%;
+    }
   }
 `;
 
@@ -69,7 +72,7 @@ interface ContainerProps {}
 
 export const Container = styled.div<ContainerProps>`
   margin: auto;
-  height: 19rem;
+  height: auto;
   input[type='file'] {
     display: none;
   }
