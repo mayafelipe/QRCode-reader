@@ -54,7 +54,7 @@ const ReaderQR: FC<ReaderQRProps> = ({
   );
   return (
     <>
-      <Container className="file">
+      <Container active={scanResultFile != ''} className="file">
         <h3>Scan QR code from a file</h3>
         <label className="file-upload">
           Choose QR
@@ -72,7 +72,7 @@ const ReaderQR: FC<ReaderQRProps> = ({
           </>
         )}
       </Container>
-      <Container className="cam">
+      <Container active={scanResultWebCam != ''} className="cam">
         <h3>Scan QR Code</h3>
         <button onClick={() => setActiveQRreader(true)}>Scan QR code</button>
         {activeQRreader && (

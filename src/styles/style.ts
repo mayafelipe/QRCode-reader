@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { device } from './mediaQueries.style';
 
 interface GridProps {}
@@ -70,8 +70,13 @@ export const Grid = styled.div<GridProps>`
     }
   }
 `;
+export const Shadow = css`
+  box-shadow: 10px 10px 59px -25px rgba(0, 0, 0, 0.75);
+`;
 
-interface ContainerProps {}
+interface ContainerProps {
+  active?: boolean;
+}
 
 export const Container = styled.div<ContainerProps>`
   margin: auto;
@@ -79,6 +84,7 @@ export const Container = styled.div<ContainerProps>`
   input[type='file'] {
     display: none;
   }
+  ${({ active }) => active && Shadow}
 `;
 export const ContainerForm = styled.form<ContainerProps>`
   input[type='Text'] {
@@ -90,7 +96,7 @@ export const ContainerForm = styled.form<ContainerProps>`
     margin: 0 1rem 0 1rem;
   }
 `;
-export const ContainerList = styled.div`
+export const ContainerList = styled.div<ContainerProps>`
   span {
     display: block;
     text-align: left;
