@@ -58,7 +58,7 @@ export const Grid = styled.div<GridProps>`
   }
 
   @media ${device.tablet} {
-    grid-template-rows: 0.5fr 1fr 1fr 1fr;
+    grid-template-rows: 3rem repeat(2, 17rem) 1fr;
     grid-template-columns: 1fr;
     grid-template-areas:
       'title'
