@@ -70,7 +70,7 @@ export const Grid = styled.div<GridProps>`
     }
   }
 `;
-export const Shadow = css`
+const Shadow = css`
   box-shadow: 10px 10px 59px -25px rgba(0, 0, 0, 0.75);
 `;
 
