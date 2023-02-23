@@ -47,8 +47,10 @@ export const Grid = styled.div<GridProps>`
     border: none;
     border-radius: 5px;
     background-color: #ffd700;
+    color: #000;
     cursor: pointer;
     transition: opacity 0.2s ease-in;
+    text-decoration: none;
   }
   button:hover,
   .file-upload:hover {
