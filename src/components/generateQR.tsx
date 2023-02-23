@@ -1,15 +1,15 @@
-import React, { FC, Dispatch, KeyboardEvent, FormEvent } from 'react';
+import React, { FC, Dispatch, FormEvent, SetStateAction } from 'react';
 import QRCode from 'qrcode';
 import { ContainerForm } from '../styles/style';
 
 interface InputProps {
   text: string;
   imageUrl: string;
-  setText: Dispatch<React.SetStateAction<string>>;
-  setImageUrl: Dispatch<React.SetStateAction<string>>;
+  setText: Dispatch<SetStateAction<string>>;
+  setImageUrl: Dispatch<SetStateAction<string>>;
 }
 
-const Input: FC<InputProps> = ({ text, setText, imageUrl, setImageUrl }) => {
+const GenerateQR: FC<InputProps> = ({ text, setText, imageUrl, setImageUrl }): JSX.Element => {
   const generateQrCode = async (e: FormEvent) => {
     e.preventDefault();
     if (!text) {
@@ -25,6 +25,7 @@ const Input: FC<InputProps> = ({ text, setText, imageUrl, setImageUrl }) => {
   };
   return (
     <ContainerForm className="form" onSubmit={generateQrCode}>
+      <h3>Generate and download QR Code</h3>
       <input
         type="text"
         onChange={(e: React.ChangeEvent<HTMLInputElement>) => setText(e.target.value)}
@@ -40,4 +41,4 @@ const Input: FC<InputProps> = ({ text, setText, imageUrl, setImageUrl }) => {
   );
 };
 
-export default Input;
+export default GenerateQR;

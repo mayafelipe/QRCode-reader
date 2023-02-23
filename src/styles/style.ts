@@ -35,24 +35,9 @@ export const Grid = styled.div<GridProps>`
     margin: 1rem;
   }
   .cam > section {
-    margin: auto;
+    margin: 1rem auto 0;
     width: 50%;
   }
-
-  @media ${device.tablet} {
-    grid-template-columns: 1fr;
-    grid-template-areas:
-      'title'
-      'scan'
-      'file'
-      'cam';
-  }
-`;
-
-interface ContainerProps {}
-
-export const Container = styled.div<ContainerProps>`
-  margin: auto;
   button,
   .file-upload {
     font-weight: bold;
@@ -69,18 +54,41 @@ export const Container = styled.div<ContainerProps>`
   .file-upload:hover {
     opacity: 0.8;
   }
+
+  @media ${device.tablet} {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      'title'
+      'scan'
+      'file'
+      'cam';
+  }
+`;
+
+interface ContainerProps {}
+
+export const Container = styled.div<ContainerProps>`
+  margin: auto;
+  height: 19rem;
   input[type='file'] {
     display: none;
   }
 `;
-export const ContainerForm = styled.div<ContainerProps>`
+export const ContainerForm = styled.form<ContainerProps>`
   input[type='Text'] {
     height: 1.5rem;
     border: 1px solid #ddd;
     border-radius: 5px;
     outline: none;
     padding: 5px;
+    margin: 0 1rem 0 1rem;
+  }
+`;
+export const ContainerList = styled.div`
+  span {
     display: block;
-    margin: 0 auto 1rem;
+    text-align: left;
+    margin-left: 1rem;
+    line-height: 1.5;
   }
 `;

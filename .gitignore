@@ -1,4 +1,5 @@
 .vscode
+.codesandbox
 build
 authNetCredentials.txt
 yarn.lock
